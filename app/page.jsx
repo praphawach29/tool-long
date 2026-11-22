@@ -1,21 +1,188 @@
-import { articleTitle, articleSummary, articlePath } from '../content/pilot.mjs';
+﻿import { articleTitle, articleSummary, articlePath } from '../content/pilot.mjs';
 import { edition, pathFor } from '../content/edition.mjs';
 
-const [feature, review, ...news] = edition;
+function badgeClassFor(category) {
+  if (!category) return 'badge badge-default';
+  if (category.includes('AI')) return 'badge badge-ai';
+  if (category.includes('ซอฟต์แวร์') || category.includes('SaaS')) return 'badge badge-sw';
+  if (category.includes('รีวิว')) return 'badge badge-rev';
+  if (category.includes('เปรียบเทียบ')) return 'badge badge-comp';
+  return 'badge badge-default';
+}
 
-function StoryLink({entry}) {
-  return <article className="story"><span className="kicker">{entry.category}</span><h3><a href={pathFor(entry.slug)}>{entry.title}</a></h3><p>{entry.summary}</p></article>;
+function ArticleCard({ entry }) {
+  const thumb = entry.coverImage?.src || `/edition-${entry.art}.svg`;
+  return (
+    <article className="card">
+      <a href={pathFor(entry.slug)} className="card-thumb" aria-label={entry.title}>
+        <img src={thumb} alt={entry.alt} loading="lazy" decoding="async" />
+      </a>
+      <div className="card-body">
+        <div className="card-meta-top">
+          <span className={badgeClassFor(entry.category)}>{entry.category}</span>
+          <span className="read-time">⏱ อ่าน ~3 นาที</span>
+        </div>
+        <h3 className="card-title">
+          <a href={pathFor(entry.slug)}>{entry.title}</a>
+        </h3>
+        <p className="card-excerpt">{entry.summary}</p>
+        <div className="card-footer">
+          <span className="card-source">ตรวจจากต้นทางแล้ว</span>
+          <a href={pathFor(entry.slug)} className="btn-read-more">
+            อ่านต่อ →
+          </a>
+        </div>
+      </div>
+    </article>
+  );
 }
 
 export default function Home() {
-  return <><section className="feature" aria-label="เรื่องเด่น"><article className="hero">
-    <div className="kicker">01 / เรื่องเด่น · {feature.category}</div>
-    <h1 className="headline">{feature.title}</h1><p className="lede">{feature.summary}</p>
-    <a className="cover" href={pathFor(feature.slug)}><img src={`/edition-${feature.art}.svg`} width="820" height="345" alt={feature.alt} fetchPriority="high" /></a>
-    <div className="under"><span className="issue">ทดสอบด้วยเสียงจำลอง</span><a href={pathFor(feature.slug)}>อ่านผลเปรียบเทียบ ↗</a></div>
-  </article><aside aria-labelledby="rail-title"><h2 id="rail-title" className="rail-title">เรื่องน่าอ่าน</h2><ol className="rail">
-    {[...news,review].map(entry=><li key={entry.slug}><div><a href={pathFor(entry.slug)}>{entry.title}</a><small>{entry.category}</small></div></li>)}
-  </ol></aside></section>
-  <section className="feed" id="latest"><div className="feed-head"><div><div className="kicker">02 / ข่าวล่าสุด</div><h2>ข่าว AI และซอฟต์แวร์</h2></div></div><div className="stories edition-grid">{news.map(entry=><StoryLink key={entry.slug} entry={entry}/>)}</div></section>
-  <section className="feed" id="reviews"><div className="feed-head"><div><div className="kicker">03 / จากการทดสอบ</div><h2>รีวิวและเปรียบเทียบ</h2></div></div><div className="stories edition-grid"><StoryLink entry={review}/><StoryLink entry={feature}/><article className="story"><span className="kicker">บทความนำร่อง</span><h3><a href={articlePath}>{articleTitle}</a></h3><p>{articleSummary}</p></article></div></section></>;
+  const [feature, review, gimp, zapyso, canva, neon, copilot] = edition;
+
+  const aiNews = [neon, copilot, canva];
+  const softwareNews = [gimp, zapyso];
+  const reviewStories = [review, feature];
+
+  return (
+    <>
+      {/* Hero Bento Section */}
+      <section className="hero-section" aria-label="เรื่องเด่นประจำฉบับ">
+        <div className="container">
+          <div className="bento-grid">
+            {/* Main Featured Hero Card */}
+            <article className="hero-card-main">
+              <a href={pathFor(feature.slug)} className="hero-image-wrap" aria-label={feature.title}>
+                <img
+                  src={`/edition-${feature.art}.svg`}
+                  alt={feature.alt}
+                  fetchPriority="high"
+                />
+              </a>
+              <div className="hero-content">
+                <div className="hero-meta-top">
+                  <span className="badge badge-comp">⭐ เรื่องเด่น · {feature.category}</span>
+                  <span className="read-time">⏱ ทดสอบเสียงจริง · อ่าน ~4 นาที</span>
+                </div>
+                <h1 className="hero-title">
+                  <a href={pathFor(feature.slug)}>{feature.title}</a>
+                </h1>
+                <p className="hero-summary">{feature.summary}</p>
+                <div className="hero-footer">
+                  <span className="hero-author">โดย ทีมบรรณาธิการ Toolลอง</span>
+                  <a href={pathFor(feature.slug)} className="btn-read-more">
+                    อ่านผลการทดสอบเต็ม ↗
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            {/* Side Bento Rail */}
+            <div className="bento-rail">
+              <article className="rail-card">
+                <div>
+                  <span className={badgeClassFor(zapyso.category)}>{zapyso.category}</span>
+                  <h3 className="rail-title">
+                    <a href={pathFor(zapyso.slug)}>{zapyso.title}</a>
+                  </h3>
+                  <p className="rail-summary">{zapyso.summary}</p>
+                </div>
+                <div className="rail-footer">
+                  <span>รองรับ macOS / Local AI</span>
+                  <a href={pathFor(zapyso.slug)} className="btn-read-more">อ่านสรุป →</a>
+                </div>
+              </article>
+
+              <article className="rail-card">
+                <div>
+                  <span className={badgeClassFor(gimp.category)}>{gimp.category}</span>
+                  <h3 className="rail-title">
+                    <a href={pathFor(gimp.slug)}>{gimp.title}</a>
+                  </h3>
+                  <p className="rail-summary">{gimp.summary}</p>
+                </div>
+                <div className="rail-footer">
+                  <span>โอเพนซอร์ส / เครื่องมือทำงาน</span>
+                  <a href={pathFor(gimp.slug)} className="btn-read-more">อ่านข่าว →</a>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Category Section: ข่าว AI */}
+      <section className="section-block" id="category-ai">
+        <div className="container">
+          <div className="section-header">
+            <div className="section-title-wrap">
+              <span className="section-icon">🤖</span>
+              <h2 className="section-heading">ข่าว AI และโมเดลล่าสุด</h2>
+            </div>
+            <span className="section-badge-desc">อัปเดตโมเดล Agent และฟีเจอร์ AI ใหม่</span>
+          </div>
+          <div className="article-grid">
+            {aiNews.map((entry) => (
+              <ArticleCard key={entry.slug} entry={entry} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Category Section: ซอฟต์แวร์ & SaaS */}
+      <section className="section-block" id="category-software">
+        <div className="container">
+          <div className="section-header">
+            <div className="section-title-wrap">
+              <span className="section-icon">💻</span>
+              <h2 className="section-heading">ซอฟต์แวร์ &amp; เครื่องมือ SaaS</h2>
+            </div>
+            <span className="section-badge-desc">โปรแกรมทำงาน ออฟฟิศ และระบบคลาวด์</span>
+          </div>
+          <div className="article-grid">
+            {softwareNews.map((entry) => (
+              <ArticleCard key={entry.slug} entry={entry} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Category Section: รีวิวและผลการทดสอบ */}
+      <section className="section-block" id="category-reviews">
+        <div className="container">
+          <div className="section-header">
+            <div className="section-title-wrap">
+              <span className="section-icon">🧪</span>
+              <h2 className="section-heading">รีวิว &amp; ผลทดสอบใช้งานจริง</h2>
+            </div>
+            <span className="section-badge-desc">ทดสอบความแม่นยำภาษาไทยและข้อจำกัด</span>
+          </div>
+          <div className="article-grid">
+            {reviewStories.map((entry) => (
+              <ArticleCard key={entry.slug} entry={entry} />
+            ))}
+            <article className="card">
+              <a href={articlePath} className="card-thumb" aria-label={articleTitle}>
+                <img src="/meeting-share.png" alt="ภาพประกอบคลิปประชุมภาษาไทย" loading="lazy" decoding="async" />
+              </a>
+              <div className="card-body">
+                <div className="card-meta-top">
+                  <span className="badge badge-comp">บทความนำร่อง</span>
+                  <span className="read-time">⏱ เสียงประชุมจริง</span>
+                </div>
+                <h3 className="card-title">
+                  <a href={articlePath}>{articleTitle}</a>
+                </h3>
+                <p className="card-excerpt">{articleSummary}</p>
+                <div className="card-footer">
+                  <span className="card-source">มีคลิปเสียงให้ฟัง</span>
+                  <a href={articlePath} className="btn-read-more">อ่านผลทดสอบ →</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </>
+  );
 }
