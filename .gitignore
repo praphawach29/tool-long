@@ -1,0 +1,14 @@
+node_modules/
+.next/
+out/
+.vercel/
+.env*
+content/transcript-raw.json
+content/affiliate-register.json
+content/social.md
+public/edition-*.svg
+!public/edition-zapyso.svg
+public/edition-*-share.png
+public/meeting-cover.svg
+public/meeting-share.png
+public/prototype.css

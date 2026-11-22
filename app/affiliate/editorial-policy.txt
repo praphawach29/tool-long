@@ -1,0 +1,5 @@
+ทะเบียนเก็บใน content/affiliate-register.json ไม่เผยแพร่เป็นไฟล์เว็บ
+แต่ละรายการใช้ product, program, status, officialUrl, affiliateUrl, termsUrl, checkedOn
+สถานะที่ใช้: pending, approved, paused; หากไม่ approved ให้ใช้ officialUrl
+ก่อนเปิดใช้: อ่านเงื่อนไขโปรแกรม ตรวจ URL ปลายทาง และจัดวางคำเปิดเผยก่อนลิงก์แรก
+ลิงก์ Affiliate ที่อนุมัติแล้วต้องระบุ rel="sponsored"; ไม่ใช้ค่าคอมมิชชันจัดอันดับ

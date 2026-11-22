@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Toolลอง — ข่าว AI และรีวิวเครื่องมือสำหรับคนทำงาน">
+<title>Toolลอง — ข่าว AI และรีวิวเครื่องมือ</title>
+<style>
+:root{color-scheme:light;--paper:#f7f5ee;--ink:#17201d;--muted:#515b51;--rule:#c5c9bd;--accent:#285844;--lime:#dbf18c;--dark:#132b23;--mono:ui-monospace,Consolas,monospace}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Leelawadee UI",Tahoma,system-ui,sans-serif;line-height:1.55}a{color:inherit}button{font:inherit;color:inherit}button,a{-webkit-tap-highlight-color:transparent}button{cursor:pointer}a:focus-visible,button:focus-visible{outline:3px solid #487247;outline-offset:4px}.wrap{width:min(1160px,calc(100% - 72px));margin-inline:auto}.skip{position:absolute;top:-100px;left:12px;z-index:9;background:var(--paper);padding:10px}.skip:focus{top:8px}.top{background:var(--dark);color:var(--lime);font:700 11px/1.5 var(--mono);letter-spacing:.1em}.top .wrap{min-height:34px;display:flex;align-items:center;justify-content:space-between;gap:12px}.edition::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--lime);margin-right:9px}.mast .wrap{display:flex;justify-content:space-between;align-items:end;gap:20px;padding-block:19px 16px}.brand{font-size:clamp(57px,8vw,106px);line-height:.93;font-weight:900;letter-spacing:-.085em;text-decoration:none}.brand span{color:var(--accent);letter-spacing:-.07em}.tagline{margin:0 0 3px;color:var(--muted);text-align:right;font-size:.89rem}.nav{background:var(--paper);position:sticky;top:0;z-index:3}.nav .wrap{display:flex;gap:24px;overflow-x:auto;scrollbar-width:thin;border-block:1px solid var(--ink)}.nav a{white-space:nowrap;text-decoration:none;font-weight:750;padding:10px 0;min-height:44px}.nav a:hover,.nav a:focus-visible{color:var(--accent);text-decoration:underline;text-underline-offset:5px}.feature{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(240px,1fr);gap:36px;margin-top:23px;padding-bottom:30px;border-bottom:1px solid var(--ink)}.kicker,.issue{font:750 11px/1.6 var(--mono);letter-spacing:.11em;text-transform:uppercase}.kicker{color:var(--accent)}.headline{font-size:clamp(29px,4.1vw,58px);line-height:1.16;letter-spacing:-.045em;margin:9px 0 11px;max-width:18em;text-wrap:balance}.lede{margin:0 0 16px;color:var(--muted);max-width:54ch}.hero{animation:arrive .55s ease-out both}.cover{overflow:hidden;background:var(--dark);display:block}.cover svg{width:100%;height:auto;display:block;transition:transform .38s ease}.cover:hover svg,.cover:focus-visible svg{transform:scale(1.025)}.under{display:flex;justify-content:space-between;align-items:center;margin-top:9px;gap:12px}.under a{font-weight:750;text-underline-offset:4px}.under .issue{color:var(--muted)}aside{border-left:1px solid var(--rule);padding-left:25px}.rail-title{margin:0;color:var(--accent);font-size:1.05rem}.rail{list-style:none;padding:0;margin:9px 0 0;counter-reset:rail}.rail li{display:grid;grid-template-columns:36px 1fr;gap:9px;padding:15px 0;border-top:1px solid var(--rule);counter-increment:rail}.rail li::before{content:"0" counter(rail);font:750 17px/1.5 var(--mono);color:var(--accent)}.rail a{font-weight:800;font-size:1.12rem;text-decoration:none;line-height:1.38}.rail a:hover,.story a:hover{text-decoration:underline;text-underline-offset:4px}.rail small{display:block;margin-top:5px;color:var(--muted)}.rail-note{margin:14px 0 0;padding:11px 13px;background:#e7ebdc;color:#35463b;font-size:.84rem}.feed{padding-block:24px 30px;scroll-margin-top:60px}.feed-head{display:flex;gap:16px;align-items:center;justify-content:space-between;margin-bottom:16px}.feed h2{font-size:clamp(27px,4vw,40px);line-height:1.1;margin:3px 0 0;letter-spacing:-.04em}.filters{display:flex;gap:5px;flex-wrap:wrap}.filters button{border:1px solid transparent;padding:5px 9px;background:none;min-height:44px;font-size:.85rem;font-weight:750}.filters button:hover{border-color:var(--accent)}.filters [aria-pressed=true]{background:var(--dark);color:#fff}.stories{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.story{min-width:0;border-top:2px solid var(--ink);padding:12px 0}.story[hidden]{display:none}.story h3{font-size:1.24rem;line-height:1.35;margin:6px 0}.story a{text-decoration:none}.story p{color:var(--muted);margin:0;font-size:.91rem}.folio{border-top:1px solid var(--ink);padding:15px 0 23px;color:var(--muted);font-size:.83rem;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.folio a{text-underline-offset:4px}dialog{border:1px solid var(--ink);padding:24px;width:min(600px,calc(100% - 32px));max-height:calc(100% - 32px);background:var(--paper);color:var(--ink)}dialog::backdrop{background:#132b23ba}dialog h2{line-height:1.25;margin:6px 0 12px}dialog form{display:flex;justify-content:flex-end}dialog button{background:none;border:1px solid var(--rule);padding:5px 11px;min-height:44px}.dialog-text{white-space:pre-line}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}@keyframes arrive{from{opacity:.15;transform:translateY(9px)}to{opacity:1;transform:none}}
+@media(max-width:780px){.wrap{width:calc(100% - 36px)}.feature{grid-template-columns:1fr;gap:22px}.mast .wrap{align-items:center}.tagline{font-size:.76rem;max-width:14em}.nav .wrap{gap:15px}aside{border-left:0;border-top:1px solid var(--ink);padding:12px 0 0}.rail{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}.rail li{padding:9px 0;grid-template-columns:25px 1fr}.rail a{font-size:.96rem}}
+@media(max-width:520px){.tagline{display:none}.mast .wrap{padding-block:15px 13px}.top .wrap{font-size:10px}.feature{margin-top:17px}.under .issue{font-size:9px}.feed-head{align-items:start;flex-direction:column;gap:7px}.stories{grid-template-columns:1fr;gap:0}.story{border-top:1px solid var(--rule)}.rail{grid-template-columns:1fr}.rail li{grid-template-columns:31px 1fr}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#main">ข้ามไปเนื้อหา</a>
+<header>
+  <div class="top"><div class="wrap"><span class="edition">TOOL LONG / TH</span><span>ฉบับตัวอย่าง · 01</span></div></div>
+  <div class="mast"><div class="wrap"><a class="brand" href="#top" aria-label="Toolลอง หน้าแรก">Tool<span>ลอง</span>.</a><p class="tagline">ข่าว AI และรีวิวเครื่องมือ<br>สำหรับคนทำงาน</p></div></div>
+</header>
+<nav class="nav" aria-label="หมวดข่าว"><div class="wrap"><a href="#top">หน้าแรก</a><a href="#latest" data-nav="news">ข่าว AI</a><a href="#latest" data-nav="review">รีวิว</a><a href="#latest" data-nav="guide">คู่มือ</a><a href="#latest" data-nav="compare">เปรียบเทียบ</a></div></nav>
+<main id="main" class="wrap">
+  <section class="feature" aria-label="เรื่องเด่น">
+    <article class="hero">
+      <div class="kicker">01 / เรื่องเด่น · คู่มือ</div>
+      <h1 class="headline">AI จดประชุมแทนเราได้แค่ไหน?</h1>
+      <p class="lede">ชวนดู 3 จุดที่ต้องตรวจ ก่อนส่งสรุปประชุมให้ทีม: ชื่อคน มติ และงานที่ต้องทำต่อ</p>
+      <a class="cover" href="#meeting" data-open aria-label="อ่าน AI จดประชุมแทนเราได้แค่ไหน">
+        <svg viewBox="0 0 820 345" role="img" aria-label="ภาพประกอบเครื่องบันทึกเสียงบนโต๊ะห้องประชุมในโทนเขียวเข้ม" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="room" x2="1" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#132b23"/><stop offset=".53" stop-color="#254638"/><stop offset="1" stop-color="#7c9256"/></linearGradient>
+            <linearGradient id="metal" x2="0" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#c2ce9a"/><stop offset=".42" stop-color="#768b63"/><stop offset="1" stop-color="#304b3e"/></linearGradient>
+            <pattern id="grain" width="5" height="5" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".65" fill="#f8ffe0" opacity=".19"/><circle cx="3" cy="4" r=".65" fill="#010e0a" opacity=".22"/></pattern>
+            <pattern id="mesh" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.4" fill="#193329"/></pattern>
+            <filter id="shadow" x="-30%" y="-85%" width="170%" height="280%"><feGaussianBlur stdDeviation="19"/></filter>
+          </defs>
+          <path fill="url(#room)" d="M0 0h820v345H0z"/>
+          <path fill="#9cb16c" opacity=".33" d="M446 0H820v157L82 345H0v-34z"/>
+          <path fill="#152f26" opacity=".6" d="M0 292 820 87v19L0 316zm0 35L820 132v5L0 337z"/>
+          <path fill="#e2efa9" opacity=".17" d="M683 0h38L210 345h-86zm87 0h22L383 345h-60z"/>
+          <path fill="none" stroke="#d8e69d" stroke-opacity=".22" d="M0 269 820 60M0 318 820 121M152 345 820 174M487 345 820 257"/>
+          <ellipse cx="427" cy="250" rx="228" ry="41" fill="#08130f" opacity=".75" filter="url(#shadow)" transform="rotate(-15 427 250)"/>
+          <g transform="translate(105 238) rotate(-16)">
+            <rect x="0" y="6" width="390" height="106" rx="30" fill="#142c24" stroke="#122219" stroke-width="2"/>
+            <rect x="0" width="390" height="100" rx="30" fill="url(#metal)" stroke="#cdd8a6" stroke-opacity=".65"/>
+            <rect x="19" y="16" width="352" height="68" rx="16" fill="#1b352b"/>
+            <rect x="28" y="23" width="115" height="54" rx="15" fill="#81946b"/>
+            <rect x="28" y="23" width="115" height="54" rx="15" fill="url(#mesh)"/>
+            <rect x="155" y="24" width="133" height="52" rx="8" fill="#10271e" stroke="#546e50"/>
+            <path d="M168 50h12l4-9 5 18 5-27 6 36 6-24 5 11 5-5h9l5-13 5 24 5-16 4 5h29" fill="none" stroke="#ddf592" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="327" cy="50" r="17" fill="#547055" stroke="#a4b58a"/><circle cx="327" cy="50" r="4" fill="#def68b"/>
+          </g>
+          <path d="M615 84h18l7-12 8 28 8-40 9 49 8-32 9 13 7-6h25" opacity=".55" fill="none" stroke="#ebf9ad" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path fill="url(#grain)" d="M0 0h820v345H0z"/>
+          <path d="M24 45V24h22m750 0h-22m22 0v21M24 300v21h22m750-21v21h-22" stroke="#e5efa9" stroke-opacity=".65" fill="none"/>
+        </svg>
+      </a>
+      <div class="under"><span class="issue">ภาพประกอบ · เรื่องตัวอย่าง</span><a href="#meeting" data-open>อ่านเรื่องเด่น ↗</a></div>
+    </article>
+    <aside aria-labelledby="rail-title"><h2 id="rail-title" class="rail-title">เรื่องน่าอ่าน</h2>
+      <ol class="rail">
+        <li><div><a href="#ai-news" data-open>เห็นคำว่า AI เปิดตัวใหม่ ควรเช็กอะไรบ้าง?</a><small>ข่าว AI · 3 นาที</small></div></li>
+        <li><div><a href="#thai-voice" data-open>ถอดเสียงไทยต้องดูมากกว่าแค่คำถูก</a><small>รีวิว · 5 นาที</small></div></li>
+        <li><div><a href="#plans" data-open>ฟรีหรือจ่ายรายเดือน แบบไหนคุ้มกับทีม?</a><small>เปรียบเทียบ · 4 นาที</small></div></li>
+      </ol>
+      <p class="rail-note">หน้านี้ใช้บทความตัวอย่าง และไม่มีลิงก์รับค่าคอมมิชชัน</p>
+    </aside>
+  </section>
+  <section id="latest" class="feed" aria-labelledby="latest-title">
+    <div class="feed-head"><div><div class="kicker">02 / จากกองบรรณาธิการ</div><h2 id="latest-title">ข่าวและบทความ</h2></div>
+    <div class="filters" role="group" aria-label="กรองบทความ"><button type="button" data-filter="all" aria-pressed="true">ทั้งหมด</button><button type="button" data-filter="news" aria-pressed="false">ข่าว AI</button><button type="button" data-filter="review" aria-pressed="false">รีวิว</button><button type="button" data-filter="guide" aria-pressed="false">คู่มือ</button><button type="button" data-filter="compare" aria-pressed="false">เปรียบเทียบ</button></div></div>
+    <p class="sr-only" id="filter-status" aria-live="polite"></p>
+    <div class="stories">
+      <article class="story" data-category="news" id="ai-news"><span class="kicker">ข่าว AI</span><h3><a href="#ai-news" data-open>เห็นคำว่า AI เปิดตัวใหม่ ควรเช็กอะไรบ้าง?</a></h3><p>แยกวันประกาศออกจากวันที่เปิดให้ใช้จริง และเช็กว่าแผนของคุณเข้าถึงได้หรือยัง</p><template>เริ่มจากประกาศของผู้พัฒนา แล้วแยกวันที่ประกาศ วันที่เริ่มทยอยเปิด และวันที่บัญชีของคุณเข้าใช้ได้จริงออกจากกัน
+
+ก่อนสรุปว่าเปิดให้ทุกคนใช้ ให้ตรวจประเทศ ภาษาที่รองรับ และเงื่อนไขของแต่ละแพ็กเกจในเอกสารทางการ</template></article>
+      <article class="story" data-category="review" id="thai-voice"><span class="kicker">รีวิว</span><h3><a href="#thai-voice" data-open>ถอดเสียงไทยต้องดูมากกว่าแค่คำถูก</a></h3><p>ลองเทียบชื่อเฉพาะ คำไทยสลับอังกฤษ และการแยกคนพูดจากคลิปเดียวกัน</p><template>ถ้าจะเปรียบเทียบเครื่องมือถอดเสียง ให้ใช้คลิปที่ได้รับอนุญาตคลิปเดียวกัน แล้วจดว่าต้องแก้ชื่อคน ตัวเลข และคำไทยปนอังกฤษกี่จุด
+
+ลองช่วงที่คนพูดซ้อนกันด้วย เครื่องมือที่สะกดคำได้ดีอาจยังแยกคนพูดผิดได้ บทความตัวอย่างนี้ยังไม่มีผลทดสอบผลิตภัณฑ์จริง</template></article>
+      <article class="story" data-category="compare" id="plans"><span class="kicker">เปรียบเทียบ</span><h3><a href="#plans" data-open>ฟรีหรือจ่ายรายเดือน แบบไหนคุ้มกับทีม?</a></h3><p>เทียบจากจำนวนคนที่ต้องใช้จริง โควตา และเวลาที่ทีมต้องเสียไปกับงานแก้</p><template>เริ่มจากจำนวนคนที่ใช้งานจริงและปริมาณงานในหนึ่งเดือน แล้วจึงเทียบราคาแบบต่อผู้ใช้กับราคาแบบเหมาทีม
+
+นับเวลาที่ใช้ตรวจหรือแก้ผลลัพธ์ด้วย หากแผนฟรีทำงานหลักได้ครบและไม่ชนโควตา ก็ยังไม่จำเป็นต้องจ่ายเพื่อฟีเจอร์ที่ทีมไม่ได้ใช้</template></article>
+      <article class="story" data-category="guide" id="meeting"><span class="kicker">คู่มือ</span><h3><a href="#meeting" data-open>AI จดประชุมแทนเราได้แค่ไหน?</a></h3><p>เช็กลิสต์สั้น ๆ สำหรับทวนชื่อคน มติ และงานค้างก่อนส่งสรุป</p><template>เทียบชื่อคนและชื่อโครงการกับรายชื่อผู้เข้าประชุม จากนั้นแยกข้อเสนอออกจากมติที่ตกลงจริง
+
+สำหรับงานติดตาม ให้ตรวจเจ้าของงานและเส้นตายทีละรายการ ถ้าเสียงต้นฉบับไม่ชัด ให้ระบุว่าต้องยืนยันอีกครั้ง แทนการใส่ข้อมูลที่เดาขึ้นเอง</template></article>
+    </div>
+  </section>
+  <footer class="folio"><span>Toolลอง · ข่าว AI และรีวิวเครื่องมือ</span><a href="#affiliate" data-open>นโยบาย Affiliate</a></footer>
+</main>
+<article id="affiliate" hidden><h3>นโยบาย Affiliate</h3><template>ต้นแบบนี้ไม่มีลิงก์รับค่าคอมมิชชัน เมื่อมีลิงก์ Affiliate ในบทความจริง จะแจ้งก่อนลิงก์แรกว่ากองบรรณาธิการอาจได้รับค่าคอมมิชชัน และไม่ใช้ค่าคอมมิชชันเป็นเกณฑ์จัดอันดับเครื่องมือ</template></article>
+<dialog id="reading" aria-labelledby="reading-title"><form method="dialog"><button type="submit">ปิด ×</button></form><div class="kicker">Toolลอง / ต้นแบบ</div><h2 id="reading-title"></h2><p class="dialog-text"></p></dialog>
+<script>
+const filterButtons = [...document.querySelectorAll('[data-filter]')];
+const stories = [...document.querySelectorAll('[data-category]')];
+const reading = document.getElementById('reading');
+function setFilter(category){
+  filterButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.filter === category)));
+  stories.forEach(story => { story.hidden = category !== 'all' && story.dataset.category !== category; });
+  document.getElementById('filter-status').textContent = `แสดง ${stories.filter(story => !story.hidden).length} บทความ`;
+}
+filterButtons.forEach(button => button.addEventListener('click', () => setFilter(button.dataset.filter)));
+document.querySelectorAll('[data-nav]').forEach(link => link.addEventListener('click', () => setFilter(link.dataset.nav)));
+document.querySelectorAll('[data-open]').forEach(link => link.addEventListener('click', event => {
+  if (!reading.showModal) return;
+  const story = document.getElementById(link.getAttribute('href').slice(1));
+  event.preventDefault();
+  reading.querySelector('h2').textContent = story.querySelector('h3').textContent;
+  reading.querySelector('.dialog-text').textContent = story.querySelector('template').content.textContent.trim();
+  reading.showModal();
+}));
+</script>
+</body>
+</html>

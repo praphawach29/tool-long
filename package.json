@@ -1,0 +1,1 @@
+{"name":"tool-long","version":"0.1.0","private":true,"scripts":{"dev":"next dev","build":"node scripts/assets.mjs && next build"},"dependencies":{"next":"16.4.6","react":"19.2.4","react-dom":"19.2.4","sharp":"0.34.5"}}
