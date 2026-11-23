@@ -1,0 +1,60 @@
+name: ToolLong Autonomous News & Social Engine
+
+on:
+  schedule:
+    # รันอัตโนมัติทุกวัน เวลา 08:00 น. ตามเวลาประเทศไทย (UTC 01:00)
+    - cron: '0 1 * * *'
+  # รองรับการกดรันด้วยตนเองผ่านแท็บ Actions บน GitHub (Manual Trigger)
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: 'หัวข้อเฉพาะหรือคลังที่ต้องการเจาะลึก (ปล่อยว่างเพื่อสแกนอัตโนมัติ)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  run-pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Editorial & Social Dispatch Engine
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          FACEBOOK_PAGE_TOKEN: ${{ secrets.FACEBOOK_PAGE_TOKEN }}
+          FACEBOOK_PAGE_ID: ${{ secrets.FACEBOOK_PAGE_ID }}
+          INPUT_TOPIC: ${{ github.event.inputs.topic }}
+        run: |
+          node scripts/autonomous-newsroom.mjs
+
+      - name: Build Next.js Static Export
+        run: npm run build
+
+      - name: Commit & Push New Edition to Main
+        run: |
+          git config --global user.name "ToolLong News Bot"
+          git config --global user.email "bot@tool-long.vercel.app"
+          git add content/edition.mjs public/
+          if git diff --staged --quiet; then
+            echo "No new changes to commit."
+          else
+            git commit -m "Auto-publish daily edition & social dispatch [skip ci]"
+            git push origin main
+          fi
