@@ -74,6 +74,16 @@ function renderContent(content) {
         </blockquote>
       );
     }
+    const imgMatch = trimmed.match(/^!\[(.*?)\]\((.*?)\)$/);
+    if (imgMatch) {
+      const [, alt, src] = imgMatch;
+      return (
+        <figure key={idx} className="article-inline-image">
+          <img src={src} alt={alt} loading="lazy" decoding="async" />
+          {alt && <figcaption className="caption">{alt}</figcaption>}
+        </figure>
+      );
+    }
     return <p key={idx}>{trimmed}</p>;
   });
 }

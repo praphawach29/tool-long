@@ -207,6 +207,30 @@ p { margin-top: 0; color: var(--text-secondary); }
 .transcripts dt { font-weight: 700; color: var(--text-primary); font-size: 15px; }
 .transcripts dd { margin: .35rem 0 0; color: var(--text-secondary); font-size: 15px; }
 
+/* Inline Article Images, Diagrams & Program Screenshots */
+.read .article-inline-image, .article-inline-image {
+  margin: 28px 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-sm);
+}
+.read .article-inline-image img, .article-inline-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.read .article-inline-image .caption, .article-inline-image .caption {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  padding: 10px 16px;
+  text-align: center;
+  background: var(--bg-muted);
+  border-top: 1px solid var(--border-subtle);
+  margin: 0;
+}
+
 /* Footer */
 .site-footer { background: var(--bg-dark); color: var(--text-muted); margin-top: 72px; padding-top: 54px; padding-bottom: 36px; border-top: 1px solid rgba(255, 255, 255, 0.08); }
 .footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
