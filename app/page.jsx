@@ -1,4 +1,4 @@
-﻿import { articleTitle, articleSummary, articlePath } from '../content/pilot.mjs';
+import { articleTitle, articleSummary, articlePath } from '../content/pilot.mjs';
 import { edition, pathFor } from '../content/edition.mjs';
 
 function badgeClassFor(category) {
@@ -20,7 +20,7 @@ function ArticleCard({ entry }) {
       <div className="card-body">
         <div className="card-meta-top">
           <span className={badgeClassFor(entry.category)}>{entry.category}</span>
-          <span className="read-time">⏱ อ่าน ~3 นาที</span>
+          <span className="read-time">{entry.readTime || '⏱ อ่าน ~3 นาที'}</span>
         </div>
         <h3 className="card-title">
           <a href={pathFor(entry.slug)}>{entry.title}</a>
@@ -38,7 +38,7 @@ function ArticleCard({ entry }) {
 }
 
 export default function Home() {
-  const feature = edition.find(e => e.slug === 'lovable-ai-fullstack-builder') || edition[0];
+  const feature = edition[0];
   const postiz = edition.find(e => e.slug === 'postiz-open-source-social-scheduler') || edition[1];
   const deepseek = edition.find(e => e.slug === 'deepseek-r1-lite-preview') || edition[2];
 
@@ -66,7 +66,7 @@ export default function Home() {
               <div className="hero-content">
                 <div className="hero-meta-top">
                   <span className={badgeClassFor(feature.category)}>⭐ เรื่องเด่น · {feature.category}</span>
-                  <span className="read-time">⏱ อ่าน ~3-4 นาที</span>
+                  <span className="read-time">{feature.readTime || '⏱ อ่าน ~3-4 นาที'}</span>
                 </div>
                 <h1 className="hero-title">
                   <a href={pathFor(feature.slug)}>{feature.title}</a>
