@@ -17,8 +17,8 @@ async function findStory(params) {
 }
 
 export async function generateMetadata({params}) {
-  const {slug,title,summary,art,alt,announcedOn} = await findStory(params);
-  const image = new URL(`/edition-${art}-share.png`,origin).href;
+  const {slug,title,summary,art,alt,announcedOn,coverImage} = await findStory(params);
+  const image = new URL(coverImage?.src ?? `/edition-${art}-share.png`,origin).href;
   const url = new URL(pathFor(slug),origin).href;
   return {
     title,

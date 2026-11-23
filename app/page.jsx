@@ -38,11 +38,15 @@ function ArticleCard({ entry }) {
 }
 
 export default function Home() {
-  const [feature, review, gimp, zapyso, canva, neon, copilot] = edition;
+  const feature = edition[0];
+  const zapyso = edition.find(e => e.slug === 'zapyso-offline-meeting-notes') || edition[1];
+  const gimp = edition.find(e => e.slug === 'gimp-ui-tests') || edition[2];
 
-  const aiNews = [neon, copilot, canva];
-  const softwareNews = [gimp, zapyso];
-  const reviewStories = [review, feature];
+  const aiNews = edition.filter(e => e.category.includes('AI') && e.slug !== feature.slug);
+  const softwareNews = edition.filter(e => (e.category.includes('ซอฟต์แวร์') || e.category.includes('SaaS')) && e.slug !== feature.slug);
+  const reviewStories = edition.filter(e => (e.category.includes('รีวิว') || e.category.includes('เปรียบเทียบ')) && e.slug !== feature.slug);
+
+  const featureThumb = feature.coverImage?.src || `/edition-${feature.art}.svg`;
 
   return (
     <>
@@ -54,15 +58,15 @@ export default function Home() {
             <article className="hero-card-main">
               <a href={pathFor(feature.slug)} className="hero-image-wrap" aria-label={feature.title}>
                 <img
-                  src={`/edition-${feature.art}.svg`}
+                  src={featureThumb}
                   alt={feature.alt}
                   fetchPriority="high"
                 />
               </a>
               <div className="hero-content">
                 <div className="hero-meta-top">
-                  <span className="badge badge-comp">⭐ เรื่องเด่น · {feature.category}</span>
-                  <span className="read-time">⏱ ทดสอบเสียงจริง · อ่าน ~4 นาที</span>
+                  <span className={badgeClassFor(feature.category)}>⭐ เรื่องเด่น · {feature.category}</span>
+                  <span className="read-time">⏱ อ่าน ~3-4 นาที</span>
                 </div>
                 <h1 className="hero-title">
                   <a href={pathFor(feature.slug)}>{feature.title}</a>
@@ -71,7 +75,7 @@ export default function Home() {
                 <div className="hero-footer">
                   <span className="hero-author">โดย ทีมบรรณาธิการ Toolลอง</span>
                   <a href={pathFor(feature.slug)} className="btn-read-more">
-                    อ่านผลการทดสอบเต็ม ↗
+                    อ่านเนื้อหาเต็ม ↗
                   </a>
                 </div>
               </div>
