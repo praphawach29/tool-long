@@ -38,9 +38,9 @@ function ArticleCard({ entry }) {
 }
 
 export default function Home() {
-  const feature = edition[0];
-  const zapyso = edition.find(e => e.slug === 'zapyso-offline-meeting-notes') || edition[1];
-  const gimp = edition.find(e => e.slug === 'gimp-ui-tests') || edition[2];
+  const feature = edition.find(e => e.slug === 'lovable-ai-fullstack-builder') || edition[0];
+  const postiz = edition.find(e => e.slug === 'postiz-open-source-social-scheduler') || edition[1];
+  const deepseek = edition.find(e => e.slug === 'deepseek-r1-lite-preview') || edition[2];
 
   const aiNews = edition.filter(e => e.category.includes('AI') && e.slug !== feature.slug);
   const softwareNews = edition.filter(e => (e.category.includes('ซอฟต์แวร์') || e.category.includes('SaaS')) && e.slug !== feature.slug);
@@ -85,29 +85,29 @@ export default function Home() {
             <div className="bento-rail">
               <article className="rail-card">
                 <div>
-                  <span className={badgeClassFor(zapyso.category)}>{zapyso.category}</span>
+                  <span className={badgeClassFor(postiz.category)}>{postiz.category}</span>
                   <h3 className="rail-title">
-                    <a href={pathFor(zapyso.slug)}>{zapyso.title}</a>
+                    <a href={pathFor(postiz.slug)}>{postiz.title}</a>
                   </h3>
-                  <p className="rail-summary">{zapyso.summary}</p>
+                  <p className="rail-summary">{postiz.summary}</p>
                 </div>
                 <div className="rail-footer">
-                  <span>รองรับ macOS / Local AI</span>
-                  <a href={pathFor(zapyso.slug)} className="btn-read-more">อ่านสรุป →</a>
+                  <span>โอเพนซอร์ส / 30+ แพลตฟอร์ม</span>
+                  <a href={pathFor(postiz.slug)} className="btn-read-more">อ่านข่าว →</a>
                 </div>
               </article>
 
               <article className="rail-card">
                 <div>
-                  <span className={badgeClassFor(gimp.category)}>{gimp.category}</span>
+                  <span className={badgeClassFor(deepseek.category)}>{deepseek.category}</span>
                   <h3 className="rail-title">
-                    <a href={pathFor(gimp.slug)}>{gimp.title}</a>
+                    <a href={pathFor(deepseek.slug)}>{deepseek.title}</a>
                   </h3>
-                  <p className="rail-summary">{gimp.summary}</p>
+                  <p className="rail-summary">{deepseek.summary}</p>
                 </div>
                 <div className="rail-footer">
-                  <span>โอเพนซอร์ส / เครื่องมือทำงาน</span>
-                  <a href={pathFor(gimp.slug)} className="btn-read-more">อ่านข่าว →</a>
+                  <span>Reasoning Model / คิดสด</span>
+                  <a href={pathFor(deepseek.slug)} className="btn-read-more">อ่านข่าว →</a>
                 </div>
               </article>
             </div>
