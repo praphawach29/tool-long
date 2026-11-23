@@ -1,4 +1,4 @@
-﻿import { notFound } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import { edition, pathFor } from '../../../content/edition.mjs';
 import fixture from '../../../content/fixture-tests.json';
 import trial from '../../../content/trial.json';
@@ -52,6 +52,32 @@ function badgeClassFor(category) {
   return 'badge badge-default';
 }
 
+function renderContent(content) {
+  if (!content) return null;
+  const blocks = Array.isArray(content) ? content : String(content).split('\n\n');
+  return blocks.map((block, idx) => {
+    if (typeof block !== 'string') return null;
+    const trimmed = block.trim();
+    if (!trimmed) return null;
+    if (trimmed.startsWith('```') && trimmed.endsWith('```')) {
+      const cleanCode = trimmed.replace(/^```[a-z]*\n?/, '').replace(/\n?```$/, '');
+      return (
+        <pre key={idx}>
+          <code>{cleanCode}</code>
+        </pre>
+      );
+    }
+    if (trimmed.startsWith('> ')) {
+      return (
+        <blockquote key={idx} className="quote-callout">
+          {trimmed.replace(/^>\s*/, '')}
+        </blockquote>
+      );
+    }
+    return <p key={idx}>{trimmed}</p>;
+  });
+}
+
 export default async function EditionArticle({params}) {
   const story = await findStory(params);
   const cover = story.coverImage ?? {src:`/edition-${story.art}.svg`,width:820,height:345};
@@ -75,7 +101,7 @@ export default async function EditionArticle({params}) {
 
       <div className="article-badge-row">
         <span className={badgeClassFor(story.category)}>{story.category}</span>
-        <span className="read-time">⏱ อ่านประมาณ 3-4 นาที</span>
+        <span className="read-time">{story.readTime || '⏱ อ่านประมาณ 3-5 นาที'}</span>
       </div>
 
       <h1 className="headline">{story.title}</h1>
@@ -90,12 +116,12 @@ export default async function EditionArticle({params}) {
         <div className="article-cover">{coverMarkup}</div>
       )}
 
-      {story.intro && <p>{story.intro}</p>}
+      {story.intro && renderContent(story.intro)}
 
       {story.sections.map(([title, copy, illustration]) => (
         <section key={title}>
           <h2>{title}</h2>
-          <p>{copy}</p>
+          {renderContent(copy)}
           {illustration && (
             <figure className="article-cover">
               <div className="cover">
@@ -160,7 +186,7 @@ export default async function EditionArticle({params}) {
       </section>
 
       <div className="affiliate-disclaimer">
-        🛡 <b>คำชี้แจงความโปร่งใส:</b> ข้อมูลในบทความนี้สรุปและวิเคราะห์จากเอกสารทางการของผู้พัฒนาโดยตรง ลิงก์อ้างอิงภายนอกไม่ใช่ลิงก์รับค่าคอมมิชชัน ·{' '}
+        🛡 <b>คำชี้แจงความโปร่งใส:</b> ข้อมูลในบทความนี้สรุปและวิเคราะห์จากเอกสารทางการและซอร์สโค้ดของผู้พัฒนาโดยตรง ลิงก์อ้างอิงภายนอกไม่ใช่ลิงก์รับค่าคอมมิชชัน ·{' '}
         <a href="/affiliate/">อ่านนโยบาย Affiliate ของ Toolลอง</a>
       </div>
     </article>
