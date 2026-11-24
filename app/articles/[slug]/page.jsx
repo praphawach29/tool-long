@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { edition, pathFor } from '../../../content/edition.mjs';
+import { edition, pathFor, formatThaiDate } from '../../../content/edition.mjs';
 import fixture from '../../../content/fixture-tests.json';
 import trial from '../../../content/trial.json';
 import { articlePath } from '../../../content/pilot.mjs';
@@ -111,6 +111,11 @@ export default async function EditionArticle({params}) {
 
       <div className="article-badge-row">
         <span className={badgeClassFor(story.category)}>{story.category}</span>
+        {story.announcedOn && (
+          <time dateTime={story.announcedOn} className="article-date">
+            📅 {formatThaiDate(story.announcedOn)}
+          </time>
+        )}
         <span className="read-time">{story.readTime || '⏱ อ่านประมาณ 3-5 นาที'}</span>
       </div>
 

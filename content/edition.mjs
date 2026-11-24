@@ -485,7 +485,8 @@ export const edition = [
         "https://github.com/openai/whisper#available-models-and-languages"
       ]
     ],
-    "social": "ลอง Whisper base กับ small ด้วยคลิปประชุมไทยเดียวกัน รุ่น small เก็บคำว่า “ส่งภาพปก” ได้ แต่ทั้งคู่ยังถอดชื่อคนและวันนัดผิด อ่านผลดิบเทียบกันก่อนเลือกว่าจะใช้รุ่นไหนจดงานต่อ"
+    "social": "ลอง Whisper base กับ small ด้วยคลิปประชุมไทยเดียวกัน รุ่น small เก็บคำว่า “ส่งภาพปก” ได้ แต่ทั้งคู่ยังถอดชื่อคนและวันนัดผิด อ่านผลดิบเทียบกันก่อนเลือกว่าจะใช้รุ่นไหนจดงานต่อ",
+    "announcedOn": "2026-11-20"
   },
   {
     "slug": "whisper-small-th-noise-test",
@@ -526,7 +527,8 @@ export const edition = [
         "https://github.com/openai/whisper#available-models-and-languages"
       ]
     ],
-    "social": "เสียงรบกวนแค่ไหนถึงทำให้คำสั่งงานเพี้ยน? เราลองเติมเสียงรบกวนให้คลิปเดิม แล้ว “ส่งภาพปก” กลายเป็น “ส่งภาพกก” ดูข้อความสองรอบเทียบกันได้ใน Toolลอง"
+    "social": "เสียงรบกวนแค่ไหนถึงทำให้คำสั่งงานเพี้ยน? เราลองเติมเสียงรบกวนให้คลิปเดิม แล้ว “ส่งภาพปก” กลายเป็น “ส่งภาพกก” ดูข้อความสองรอบเทียบกันได้ใน Toolลอง",
+    "announcedOn": "2026-11-21"
   },
   {
     "slug": "gimp-ui-tests",
@@ -671,7 +673,8 @@ export const edition = [
         "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/"
       ]
     ],
-    "social": "Google เปิดตัว Gemini 4 Neon สำหรับงานหลายขั้นและงานวิเคราะห์ พร้อมทยอยเปิดใน Gemini API และผลิตภัณฑ์บางแผน สรุปว่าเข้าถึงทางไหนได้บ้างและควรลองกับงานแบบไหน"
+    "social": "Google เปิดตัว Gemini 4 Neon สำหรับงานหลายขั้นและงานวิเคราะห์ พร้อมทยอยเปิดใน Gemini API และผลิตภัณฑ์บางแผน สรุปว่าเข้าถึงทางไหนได้บ้างและควรลองกับงานแบบไหน",
+    "announcedOn": "2026-11-18"
   },
   {
     "slug": "microsoft-ignite-copilot-workspaces",
@@ -700,8 +703,29 @@ export const edition = [
         "https://news.microsoft.com/source/2026/11/17/microsoft-ignite-2026-empowering-human-ambition-intelligence-and-trust/"
       ]
     ],
-    "social": "Microsoft เปิดตัว Copilot Workspaces ที่ Ignite ให้คนกับเอเจนต์ทำงานร่วมกัน พร้อม Autopilot และ Copilot Code ก่อนลองใช้กับทีม อย่าลืมแยกสิ่งที่ประกาศออกจากสิ่งที่บัญชีองค์กรเปิดใช้ได้จริง"
+    "social": "Microsoft เปิดตัว Copilot Workspaces ที่ Ignite ให้คนกับเอเจนต์ทำงานร่วมกัน พร้อม Autopilot และ Copilot Code ก่อนลองใช้กับทีม อย่าลืมแยกสิ่งที่ประกาศออกจากสิ่งที่บัญชีองค์กรเปิดใช้ได้จริง",
+    "announcedOn": "2026-11-17"
   }
 ];
 
 export const pathFor = (slug) => `/articles/${slug}/`;
+
+export function formatThaiDate(dateStr, short = false) {
+  if (!dateStr) return '';
+  const parts = String(dateStr).split('-');
+  if (parts.length !== 3) return dateStr;
+  const [year, month, day] = parts;
+  const thaiMonthsFull = [
+    'มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน',
+    'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'
+  ];
+  const thaiMonthsShort = [
+    'ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.',
+    'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'
+  ];
+  const mIndex = parseInt(month, 10) - 1;
+  const d = parseInt(day, 10);
+  if (isNaN(d) || !thaiMonthsFull[mIndex]) return dateStr;
+  const m = short ? thaiMonthsShort[mIndex] : thaiMonthsFull[mIndex];
+  return `${d} ${m} ${year}`;
+}

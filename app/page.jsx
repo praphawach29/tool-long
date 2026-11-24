@@ -1,5 +1,5 @@
 import { articleTitle, articleSummary, articlePath } from '../content/pilot.mjs';
-import { edition, pathFor } from '../content/edition.mjs';
+import { edition, pathFor, formatThaiDate } from '../content/edition.mjs';
 
 function badgeClassFor(category) {
   if (!category) return 'badge badge-default';
@@ -20,6 +20,11 @@ function ArticleCard({ entry }) {
       <div className="card-body">
         <div className="card-meta-top">
           <span className={badgeClassFor(entry.category)}>{entry.category}</span>
+          {entry.announcedOn && (
+            <time dateTime={entry.announcedOn} className="card-date">
+              📅 {formatThaiDate(entry.announcedOn, true)}
+            </time>
+          )}
           <span className="read-time">{entry.readTime || '⏱ อ่าน ~3 นาที'}</span>
         </div>
         <h3 className="card-title">
@@ -66,6 +71,11 @@ export default function Home() {
               <div className="hero-content">
                 <div className="hero-meta-top">
                   <span className={badgeClassFor(feature.category)}>⭐ เรื่องเด่น · {feature.category}</span>
+                  {feature.announcedOn && (
+                    <time dateTime={feature.announcedOn} className="article-date">
+                      📅 {formatThaiDate(feature.announcedOn)}
+                    </time>
+                  )}
                   <span className="read-time">{feature.readTime || '⏱ อ่าน ~3-4 นาที'}</span>
                 </div>
                 <h1 className="hero-title">
@@ -85,7 +95,14 @@ export default function Home() {
             <div className="bento-rail">
               <article className="rail-card">
                 <div>
-                  <span className={badgeClassFor(postiz.category)}>{postiz.category}</span>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                    <span className={badgeClassFor(postiz.category)}>{postiz.category}</span>
+                    {postiz.announcedOn && (
+                      <time dateTime={postiz.announcedOn} className="card-date">
+                        📅 {formatThaiDate(postiz.announcedOn, true)}
+                      </time>
+                    )}
+                  </div>
                   <h3 className="rail-title">
                     <a href={pathFor(postiz.slug)}>{postiz.title}</a>
                   </h3>
@@ -99,7 +116,14 @@ export default function Home() {
 
               <article className="rail-card">
                 <div>
-                  <span className={badgeClassFor(deepseek.category)}>{deepseek.category}</span>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                    <span className={badgeClassFor(deepseek.category)}>{deepseek.category}</span>
+                    {deepseek.announcedOn && (
+                      <time dateTime={deepseek.announcedOn} className="card-date">
+                        📅 {formatThaiDate(deepseek.announcedOn, true)}
+                      </time>
+                    )}
+                  </div>
                   <h3 className="rail-title">
                     <a href={pathFor(deepseek.slug)}>{deepseek.title}</a>
                   </h3>
