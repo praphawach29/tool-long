@@ -51,52 +51,60 @@ export const edition = [
     "social": "Docling จาก IBM Research ทะยานสู่อันดับ 1 GitHub Trending: ผ่าสถาปัตยกรรมตัวแปลง PDF/ตารางเป็น Markdown สำหรับ RAG ทำงานออฟไลน์ 100% ด้วย DocLayNet และ TableFormer สัญญาอนุญาต MIT ใช้ฟรีทั้งองค์กร"
   },
   {
-    "slug": "anthropic-model-context-protocol-mcp",
-    "category": "ข่าว AI",
-    "art": "mcp-protocol",
-    "alt": "ภาพประกอบ 3D Tech ของ Model Context Protocol (MCP) แสดงการเชื่อมต่อสมองกล AI เข้ากับเซิร์ฟเวอร์และฐานข้อมูล",
-    "title": "Anthropic เปิดตัว Model Context Protocol (MCP) มาตรฐานโอเพนซอร์ส เปรียบเสมือน \"USB-C ของวงการ AI\" เชื่อมต่อโมเดลเข้ากับฐานข้อมูลและโค้ดในคำสั่งเดียว",
-    "summary": "Anthropic เปิดตัว Model Context Protocol (MCP) สู่สาธารณะภายใต้สัญญาอนุญาตโอเพนซอร์ส เพื่อแก้ปัญหาความแตกแยกของระบบเชื่อมต่อ LLM กับฐานข้อมูลและเครื่องมือภายนอก ผ่านโปรโตคอล JSON-RPC มาตรฐาน",
-    "announcedOn": "2026-11-24",
-    "readTime": "⏱ อ่านประมาณ 5-6 นาที",
-    "coverImage": {
-      "src": "/mcp-protocol-cover.jpg",
-      "width": 1792,
-      "height": 1024
-    },
-    "coverCaption": "ภาพประกอบ 3D Tech สไตล์โมเดิร์น แสดงสถาปัตยกรรม Model Context Protocol (MCP), การเชื่อมต่อ JSON-RPC ผ่าน stdio/SSE และการแลกเปลี่ยนบริบทระหว่าง AI กับคลาวด์",
-    "intro": "Anthropic ประกาศเปิดตัว Model Context Protocol (MCP) สู่สาธารณะเมื่อวันที่ 24–25 พฤศจิกายน 2026 ภายใต้สัญญาอนุญาตแบบเปิด (Open Source: MIT / Apache-2.0 License บนองค์กร GitHub modelcontextprotocol) เพื่อแก้ปัญหาความแตกแยกของระบบเชื่อมต่อ (Fragmentation) ที่เดิมทีนักพัฒนาต้องเขียนโค้ดเชื่อมต่อ API เฉพาะทางซ้ำซ้อนทุกครั้งที่เปลี่ยนโมเดลหรือค่าย AI โปรโตคอลนี้ทำหน้าที่เป็นตัวกลางมาตรฐานที่ทำให้ LLM ฝั่งไคลเอนต์ (Host) สามารถสื่อสารกับแหล่งข้อมูลภายนอก (Server) ผ่านภาษาเดียวกัน",
-    "sections": [
-      [
-        "สถาปัตยกรรม Client-Host-Server: การเชื่อมโยงระดับ JSON-RPC",
-        "ในเชิงสถาปัตยกรรมระบบ MCP ทำงานผ่านโปรโตคอล JSON-RPC บนสองช่องทางการรับส่งข้อมูลหลัก คือ Standard Input/Output (`stdio`) สำหรับรันคำสั่งภายในเครื่องเดียวกันอย่างปลอดภัย และ Server-Sent Events (`SSE`) ผ่าน HTTP สำหรับเชื่อมต่อบริการระยะไกล\n\nโครงสร้างของ MCP Server แบ่งสิทธิ์การทำงานออกเป็น 3 องค์ประกอบหลักชัดเจน:\n- **Resources**: ข้อมูลสำหรับอ่าน เช่น ไฟล์เอกสารหรือแถวฐานข้อมูล PostgreSQL\n- **Tools**: ฟังก์ชันที่อนุญาตให้โมเดลประมวลผลคำสั่ง เช่น การรันคำสั่ง Git หรือสร้าง Issue\n- **Prompts**: เทมเพลตคำสั่งมาตรฐานที่ผู้ดูแลระบบกำหนดไว้ล่วงหน้า"
-      ],
-      [
-        "เริ่มต้นพัฒนาด้วย SDK ทางการและ Reference Servers",
-        "ผู้พัฒนาสามารถเริ่มต้นสร้างและทดสอบเซิร์ฟเวอร์ได้ทันทีผ่าน SDK ทางการทั้งภาษา Python (`pip install mcp`) และ TypeScript (`npm install @modelcontextprotocol/sdk`)\n\nนอกจากนี้ยังมีคลัง Reference Servers สำเร็จรูปสำหรับบริการยอดนิยม เช่น GitHub, Slack, Google Drive, PostgreSQL และระบบจัดการไฟล์ในเครื่อง โดยผู้ใช้ Claude Desktop สามารถเพิ่มการตั้งค่าลงในไฟล์คอนฟิกเพื่อเรียกใช้งานเครื่องมือเหล่านี้ได้โดยตรง"
-      ],
-      [
-        "การตรวจสอบและความเสี่ยงด้านความปลอดภัย (Security & Actionable Audit)",
-        "ข้อมูลทั้งหมดในบทความนี้รวบรวมจากเอกสารสเปกอย่างเป็นทางการของ Anthropic และการตรวจสอบโครงสร้างโค้ดบนคลัง `modelcontextprotocol/servers` ทาง Toolลอง ยังไม่ได้รันเซิร์ฟเวอร์ทดสอบกับระบบฐานข้อมูลโปรดักชันจริง\n\nข้อจำกัดด้านความปลอดภัยที่ทีมงานและองค์กรต้องตระหนัก คือ MCP อาศัยการอนุญาตสิทธิ์ระดับโปรเซส หากผู้ใช้เปิดสิทธิ์การรันคำสั่ง (Tools) ที่มีผลเขียนหรือลบข้อมูลโดยไม่มีกลไกยืนยันจากมนุษย์ (Human-in-the-loop) อาจทำให้ระบบภายนอกเกิดความเสียหายจากคำสั่งที่ประมวลผลผิดพลาดได้"
-      ]
-    ],
-    "sources": [
-      [
-        "Official Model Context Protocol Specification",
-        "https://modelcontextprotocol.io"
-      ],
-      [
-        "Anthropic Announcement · Model Context Protocol",
-        "https://www.anthropic.com/news/model-context-protocol"
-      ],
-      [
-        "GitHub Organization · modelcontextprotocol",
-        "https://github.com/modelcontextprotocol"
-      ]
-    ],
-    "sourceNote": "บทความนี้ตรวจสอบจากเอกสารสเปกทางการของ Anthropic, โครงสร้างโค้ดบน GitHub modelcontextprotocol/servers และการวิเคราะห์การส่งข้อมูลผ่าน JSON-RPC; ข้อมูลเชิงเทคนิคบันทึกตามสภาพจริงของโครงการ",
-    "social": "Anthropic เปิดตัว Model Context Protocol (MCP) มาตรฐานเปิดแบบ MIT เชื่อมต่อ AI Agent กับฐานข้อมูลและเครื่องมือในเครื่อง รองรับทั้ง Python และ TypeScript ชวนวิเคราะห์สถาปัตยกรรมและความปลอดภัยก่อนนำไปต่อระบบจริง"
+  "slug": "anthropic-model-context-protocol-mcp",
+  "category": "ข่าว AI",
+  "art": "mcp-protocol",
+  "alt": "ภาพประกอบ 3D Tech ของ Model Context Protocol (MCP) แสดงการเชื่อมต่อสมองกล AI เข้ากับเซิร์ฟเวอร์และฐานข้อมูล",
+  "title": "หมดยุคก๊อปแปะ! เจาะลึก Anthropic MCP อัปเกรดมาตรฐานเชื่อม AI สู่โลกจริง พร้อมฟีเจอร์เด็ดรู้ว่า 'ปุ่มไหนห้ามกด'",
+  "summary": "หมดยุคที่ AI ทำได้แค่นั่งตอบแชต! เจาะลึก Model Context Protocol (MCP) มาตรฐานโอเพนซอร์สจาก Anthropic ที่ทำหน้าที่เป็น 'USB-C ของวงการ AI' พร้อมผ่า 4 ฟังก์ชันใหญ่ Skills, Tasks และ Elicitation ที่เปลี่ยน AI ให้ทำงานแทนเราได้จริงแบบไม่พังระบบ",
+  "announcedOn": "2026-11-25",
+  "readTime": "⏱ อ่านประมาณ 5-6 นาที",
+  "coverImage": {
+    "src": "/mcp-protocol-cover.jpg",
+    "width": 1792,
+    "height": 1024
   },
+  "coverCaption": "ภาพประกอบ 3D Tech สไตล์โมเดิร์น แสดงสถาปัตยกรรม Model Context Protocol (MCP), การเชื่อมต่อ JSON-RPC ผ่าน stdio/SSE และการแลกเปลี่ยนบริบทระหว่าง AI กับคลาวด์",
+  "intro": "เคยหงุดหงิดไหมครับ? เวลาสั่งให้ AI ช่วยวิเคราะห์ข้อมูลหรือเขียนโค้ด แต่เราต้องคอยสลับหน้าจอกลับไปกลับมา ดาวน์โหลดไฟล์จาก Google Drive, ก๊อปปี้โค้ดจาก GitHub, แล้วเอามาตัดแปะลงในช่องแชตทีละท่อน หรือพอปล่อยให้ Agent ทำงานเอง มันก็ดันเผลอรันคำสั่งลบข้อมูลหรือทำระบบพังเพราะไม่รู้ขั้นตอนที่ถูกต้อง\n\nปัญหาคอขวดที่น่ารำคาญที่สุดของวงการ AI กำลังจะจบลงด้วย **Model Context Protocol (MCP)** มาตรฐานโอเพนซอร์สจาก Anthropic ที่เปรียบเสมือนการสร้าง ‘พอร์ต USB-C กลาง’ ให้สมองกล AI สามารถเสียบปลั๊กเข้ากับฐานข้อมูลและแอปภายนอกได้โดยตรง และล่าสุดได้มีการอัปเกรดฟังก์ชัน Agentic ขั้นสูงที่สอนให้ AI มีคู่มือการทำงานในมือ พร้อมระบบ ‘หยุดถามมนุษย์ก่อนกดปุ่มอันตราย’ อย่างเป็นทางการ",
+  "sections": [
+    [
+      "ทำไม MCP ถึงเป็น ‘USB-C ของวงการ AI’ ที่ทุกคนต้องรู้",
+      "ก่อนหน้านี้ หากนักพัฒนาต้องการให้ Claude หรือ GPT เข้าถึงฐานข้อมูล PostgreSQL หรือ Slack องค์กร วิศวกรต้องลงมือเขียน API Wrapper ขึ้นมาเอง พอเปลี่ยนค่ายโมเดลก็ต้องแก้โค้ดใหม่ทั้งหมด เกิดความแตกแยก (Fragmentation) จนระบบขยายตัวไม่ได้\n\nAnthropic จึงแก้เกมด้วยการปล่อย **MCP** เป็นมาตรฐานเปิด (Open Source ภายใต้สัญญาอนุญาต MIT / Apache-2.0 บน GitHub องค์กร `modelcontextprotocol`)\n\nหลักการทำงานของ MCP นั้นเรียบง่ายและทรงพลัง: มันแบ่งโลกการทำงานออกเป็น **Host (ตัวเรียกใช้ เช่น Claude Desktop / IDE)** และ **Server (ผู้ให้บริการข้อมูล)** โดยคุยกันผ่านโปรโตคอลมาตรฐาน JSON-RPC บน 2 ช่องทางหลัก:\n1. **Standard Input/Output (`stdio`)**: รันโปรเซสภายในเครื่องเดียวกัน ปลอดภัยสูง ข้อมูลไม่หลุดออกเน็ต\n2. **Server-Sent Events (`SSE`)**: เชื่อมต่อผ่าน HTTP สำหรับคลาวด์หรือเซิร์ฟเวอร์ระยะไกล\n\nข้อมูลและคำสั่งจะถูกจัดเป็น 3 ก้อนมาตรฐานเสมอ คือ **Resources** (ไฟล์/แถวข้อมูลสำหรับอ่าน), **Tools** (ฟังก์ชันให้ AI สั่งรัน), และ **Prompts** (เทมเพลตคำสั่งประจำงาน)"
+    ],
+    [
+      "ผ่า 4 หมัดเด็ดอัปเกรดใหม่: เปลี่ยน AI จาก ‘เด็กฝึกงานมือบอน’ สู่ ‘ผู้ช่วยมืออาชีพ’",
+      "ในการพัฒนาล่าสุด MCP ได้ก้าวข้ามจากการเป็นแค่ท่อส่งข้อมูลธรรมดา ด้วยการเพิ่ม 4 ขีดความสามารถระดับ Agentic ที่ตอบโจทย์การใช้งานจริงในองค์กร:\n\n1. **Skills over MCP (ส่งคู่มือ Playbook พ่วงเครื่องมือ)**: เดิมทีเวลาส่ง Tool ให้ AI เช่น ‘ปุ่มสร้างสินค้า’ AI อาจไม่รู้ลำดับขั้นตอนที่ดีที่สุด แต่ฟีเจอร์นี้เปิดให้ผู้พัฒนาแอปแนบ Playbook คู่มือการทำงานมาด้วย Claude จะเปิดอ่านเฉพาะตอนต้องใช้จริง ทำให้ไม่เปลืองพื้นที่ความจำ (Context Window) เช่น เจ้าของร้าน Shopify แค่สั่งว่า ‘แต่งหน้าร้านธีมปีใหม่’ AI ก็เปิดดูคู่มือของ Shopify แล้วทำตามสเต็ปที่ถูกต้องทันที\n\n2. **Tasks (รันงานหนักเบื้องหลัง ไม่ต้องนั่งรอจอดำ)**: เวลาสั่งคำสั่งที่ใช้เวลาประมวลผลนาน เช่น คิวรีฐานข้อมูลขนาดใหญ่หรือบิลด์โปรเจกต์ เซิร์ฟเวอร์จะรับไปรันแบบ Asynchronous ในเบื้องหลัง ระหว่างนั้นเราสั่งงานอื่นต่อได้ทันที เมื่องานเสร็จระบบจะดึงผลลัพธ์มาส่งเอง\n\n3. **Elicitation (ระบบเบรกฉุกเฉิน ถามคนก่อนทำพัง)**: อุดรอยรั่วความเสี่ยงสูงสุดของ AI ด้วยระบบ Human-in-the-loop เมื่อ AI กำลังจะทำคำสั่งที่มีผลกระทบย้อนกลับไม่ได้ (เช่น การจ่ายเงิน หรือการลบ GitHub Repository) ระบบจะหยุดชะงักและเด้งกล่องยืนยันให้มนุษย์ตรวจสอบและอนุมัติก่อนเสมอ\n\n4. **Documents & File Streaming**: รองรับการส่งไฟล์ PDF สเปรดชีต หรือรูปภาพเข้าสู่แอปปลายทางโดยตรง โดยไม่เอาเนื้อหาไฟล์ทั้งหมดมาเบียดพื้นที่ความจำของบทสนทนา"
+    ],
+    [
+      "นักพัฒนาและคนทำงานเริ่มต้นใช้งานจริงได้อย่างไร? (Actionable Steps)",
+      "สำหรับนักพัฒนา สามารถเริ่มต้นสร้าง MCP Server ของตัวเองได้ทันทีผ่าน SDK ทางการที่มีให้ทั้งภาษา Python และ TypeScript:\n\n```bash\n# ติดตั้ง Python SDK ทางการ\npip install mcp\n\n# หรือติดตั้ง TypeScript SDK ทางการ\nnpm install @modelcontextprotocol/sdk\n```\n\nนอกจากนี้ยังมีคลัง **Reference Servers** สำเร็จรูปในคลัง `modelcontextprotocol/servers` ครอบคลุมทั้ง GitHub, Slack, Google Drive, PostgreSQL, SQLite และระบบจัดการไฟล์ในเครื่อง ซึ่งผู้ใช้ Claude Desktop สามารถก๊อปปี้บล็อกคอนฟิก JSON ไปวางในไฟล์การตั้งค่า แล้วเริ่มเรียกใช้เครื่องมือเหล่านี้ผ่านแชตได้ทันที\n\nในฝั่งผู้ใช้งานระดับ Business และองค์กร แอปยอดนิยมอย่าง Shopify, HubSpot, Atlassian, Supabase และ Railway กำลังทยอยปล่อย Connector ที่รองรับมาตรฐานนี้อย่างต่อเนื่อง"
+    ],
+    [
+      "สรุปหมัดเด็ดใน 3 บรรทัด & ข้อควรระวังก่อนนำไปใช้ (Actionable Takeaway)",
+      "**สรุปหมัดเด็ดที่ต้องรู้:**\n- **MCP คืออะไร:** มาตรฐานกลางเชื่อม AI กับโปรแกรมภายนอกเหมือนพอร์ต USB-C ทำงานผ่าน JSON-RPC แบบโอเพนซอร์สฟรี 100%\n- **ฟังก์ชันใหม่ช่วยอะไร:** มี Skills ส่งคู่มือสอน AI, มี Tasks ทำงานเบื้องหลัง, และมี Elicitation ป้องกัน AI เผลอลบข้อมูลสำคัญ\n- **ใครได้ประโยชน์:** นักพัฒนาไม่ต้องเขียน API ซ้ำซ้อน และคนทำงานทั่วไปสั่งงานข้ามแอปได้ลื่นไหล ไม่ต้องก๊อปแปะอีกต่อไป\n\n**ข้อควรระวังเรื่องความปลอดภัย:** แม้จะมี Elicitation แต่ในการติดตั้ง MCP Server บนเครื่องทำงาน ผู้ใช้ยังคงต้องตรวจสอบสิทธิ์ (File System & Command Execution Permissions) ให้รอบคอบ อย่าเปิดสิทธิ์ Admin หรือเขียนทับไฟล์ในโฟลเดอร์ระบบหากไม่จำเป็น เพื่อป้องกันไม่ให้โมเดลประมวลผลคำสั่งที่อาจสร้างความเสียหายแก่เครื่องของคุณ"
+    ]
+  ],
+  "sources": [
+    [
+      "Official Model Context Protocol Specification",
+      "https://modelcontextprotocol.io"
+    ],
+    [
+      "Anthropic Research & Announcement · Skills over MCP and Tasks",
+      "https://claude.com/resources/articles/skills-over-mcp-tasks-and-more"
+    ],
+    [
+      "GitHub Organization · modelcontextprotocol",
+      "https://github.com/modelcontextprotocol"
+    ],
+    [
+      "Techsauce AI Report · Claude MCP Update",
+      "https://techsauce.co/ai/claude-mcp-update-skills-tasks-elicitation"
+    ]
+  ],
+  "sourceNote": "บทความนี้รวบรวมและวิเคราะห์จากเอกสารสเปกทางการ modelcontextprotocol.io, คลังซอร์สโค้ด GitHub modelcontextprotocol/servers และรายงานฟีเจอร์ใหม่ Skills/Tasks/Elicitation ของ Anthropic",
+  "social": "หมดยุคก๊อปแปะ! เจาะลึก Anthropic MCP อัปเกรดมาตรฐานเชื่อม AI สู่โลกจริง พร้อมผ่า 4 หมัดเด็ด Skills, Tasks และ Elicitation รู้ว่าปุ่มไหนห้ามกดถ้าคนยังไม่อนุมัติ"
+},
   {
     "slug": "langfuse-prompt-experiments-evaluation-audit",
     "category": "รีวิว & เปรียบเทียบ",
