@@ -1,5 +1,56 @@
 export const edition = [
   {
+    "slug": "docling-ibm-document-parser-rag-architecture-audit",
+    "category": "เครื่องมือ AI",
+    "art": "docling-rag",
+    "alt": "ภาพประกอบ 3D Tech ของ Docling แสดงการสแกนและแปลงไฟล์ PDF ตาราง และเอกสารซับซ้อนสู่โครงสร้างข้อมูลสำหรับ RAG",
+    "title": "Docling จาก IBM Research: ผ่าสถาปัตยกรรมตัวแปลง PDF สู่ Markdown สำหรับ RAG ที่ทะยานสู่อันดับ 1 บน GitHub",
+    "summary": "เจาะลึก Docling ทูลแปลงเอกสารโอเพนซอร์สจาก IBM Research ที่คว้าอันดับ 1 GitHub Trending ใช้โมเดล DocLayNet และ TableFormer ถอดโครงสร้าง PDF และตารางเป็น Markdown/JSON โดยทำงานแบบออฟไลน์ 100%",
+    "announcedOn": "2026-11-25",
+    "readTime": "⏱ อ่านประมาณ 5-6 นาที",
+    "coverImage": {
+      "src": "/docling-rag-cover.jpg",
+      "width": 1792,
+      "height": 1024
+    },
+    "coverCaption": "ภาพประกอบ 3D Tech สไตล์โมเดิร์น แสดงสถาปัตยกรรมการสแกนเอกสาร PDF, การตรวจจับเลย์เอาต์ด้วย DocLayNet และการสกัดตารางด้วย TableFormer สู่โครงสร้าง Markdown",
+    "intro": "ในยุคที่ระบบ Retrieval-Augmented Generation (RAG) กลายเป็นกระดูกสันหลังของ AI องค์กร อุปสรรคใหญ่ที่สุดกลับไม่ใช่ตัวโมเดล LLM แต่คือ \"ความเละ\" ของข้อมูลต้นทาง โดยเฉพาะไฟล์ PDF และเอกสารสแกนที่มีตารางซับซ้อน ข้อความหลายคอลัมน์ หรือหัวข้อซ้อนกัน ล่าสุดโปรเจกต์ Docling จากทีม IBM Research ได้กลายเป็นคลังโอเพนซอร์สที่ทะยานขึ้นอันดับ 1 บน GitHub Trending ทั่วโลก ด้วยแนวทางแก้ปัญหาเชิงลึกระดับ Computer Vision ที่ไม่พึ่งพา Cloud API ภายนอกแม้แต่น้อย",
+    "sections": [
+      [
+        "เบื้องหลังสถาปัตยกรรม 5 ขั้นตอน: จากพิกเซลสู่ DoclingDocument",
+        "จากการตรวจสอบสถาปัตยกรรมของ Docling (องค์กร GitHub `docling-project/docling`) ตัวระบบไม่ได้ใช้วิธีดูดข้อความดิบ (raw text extraction) แบบเครื่องมือยุคเก่า แต่แบ่งการประมวลผลออกเป็น 5 สเตจที่ทำงานประสานกันอย่างเป็นระบบ:\n\n1. **Document Parsing**: ดึงข้อมูลเวกเตอร์ ตัวอักษร และเรนเดอร์หน้ากระดาษเป็นภาพความละเอียดสูง\n2. **Layout Analysis**: ใช้โมเดล Object Detection (กลุ่ม RT-DETR) ที่เทรนบนชุดข้อมูล DocLayNet เพื่อระบุขอบเขตย่อหน้า หัวข้อ คำบรรยายภาพ และกล่องตารางอย่างแม่นยำ\n3. **Table Structure Extraction (TableFormer)**: ส่งขอบเขตตารางเข้าโมเดล TableFormer ในแพ็กเกจ `docling-ibm-models` เพื่อทำนายโครงสร้างตาราง แถว คอลัมน์ และเซลล์ที่ผสาน (Merged Cells)\n4. **OCR Fallback**: สำหรับเอกสารสแกนหรือรูปภาพ ระบบจะเรียก OCR สำรอง (รองรับ EasyOCR, Tesseract หรือ RapidOCR)\n5. **Assembly & Export**: ประกอบโครงสร้างทั้งหมดเข้าสู่โมเดลข้อมูลมาตรฐาน `DoclingDocument` ก่อนส่งออกเป็น Markdown หรือ JSON"
+      ],
+      [
+        "หัวใจของความแม่นยำ: DocLayNet และโมเดลวิสัยทัศน์ TableFormer",
+        "จุดตัดที่ทำให้ Docling เหนือกว่าเครื่องมือแปลงเอกสารทั่วไปคือการผสานชุดข้อมูล **DocLayNet** (ชุดข้อมูลเอกสารจริงกว่า 80,000 หน้า ครอบคลุมทั้งรายงานการเงิน สิทธิบัตร เอกสารวิชาการ และสัญญาทางกฎหมาย) เข้ากับสถาปัตยกรรม **TableFormer**\n\nโมเดล TableFormer ทำหน้าที่ถอดรหัสโครงสร้างตารางเชิงพื้นที่ (Spatial Topology) ออกมาเป็น OTSL (Open Table Structure Language) ทำให้สามารถรักษาโครงสร้างตารางหลายมิติไว้ได้อย่างสมบูรณ์ ต่างจาก OCR ทั่วไปที่มักทำข้อความในตารางไหลปนกันจนระบบ RAG นำไป Chunking ผิดพลาด"
+      ],
+      [
+        "ความคุ้มค่า สัญญาอนุญาต และวิธีเริ่มใช้งานจริง (Actionable CLI/Code)",
+        "ในด้านสิทธิ์และต้นทุน Docling ปล่อยซอร์สโค้ดหลักและโมเดลทั้งหมดภายใต้สัญญาอนุญาต **MIT License** (และ DocLayNet ภายใต้ CDLA-Permissive-1.0) ทำให้ทีมวิศวกรสามารถนำไปติดตั้งบนเซิร์ฟเวอร์ส่วนตัว (On-Premise) หรือรันในไปป์ไลน์ข้อมูลได้ฟรี 100% โดยไม่ต้องกังวลเรื่องข้อมูลลูกค้ารั่วไหลออกสู่นอกองค์กร\n\nนักพัฒนาสามารถติดตั้งผ่าน Python ได้ทันที:\n```bash\npip install docling\n```\nและแปลงเอกสารผ่าน CLI ในคำสั่งเดียว:\n```bash\ndocling document.pdf --to md\n```\nหรือเขียนสคริปต์ไพธอนควบคุม:\n```python\nfrom docling.document_converter import DocumentConverter\n\nconverter = DocumentConverter()\nresult = converter.convert(\"report.pdf\")\nmarkdown_output = result.document.export_to_markdown()\n```"
+      ],
+      [
+        "ข้อจำกัดและสิ่งที่ทีมงานต้องประเมินก่อนขึ้น Production",
+        "จากการวิเคราะห์ทรัพยากรระบบ Docling จำเป็นต้องรันโมเดล Deep Learning สำหรับ Layout และ TableFormer ในเครื่อง ทำให้ต้องใช้หน่วยความจำ RAM อย่างน้อย 2–4 GB ต่อ Worker ในการประมวลผล หากรันบน CPU ทั่วไปจะใช้เวลาเฉลี่ย 2–5 วินาทีต่อหน้ากระดาษ (เปรียบเทียบกับไม่ถึง 0.5 วินาทีหากมี GPU เร่งความเร็ว)\n\nนอกจากนี้สำหรับเอกสารภาษาไทย หากเป็นไฟล์สแกนที่ต้องพึ่งพา OCR ผู้ดูแลระบบต้องดาวน์โหลดโมเดลภาษาไทยของ EasyOCR หรือ Tesseract เพิ่มเติม ข้อมูลในบทความนี้อ้างอิงจากงานวิจัย เอกสารสเปก และโค้ดของ IBM Research โดย Toolลอง ไม่ได้เปิดเผยข้อมูลภายในใดๆ ของผู้ใช้"
+      ]
+    ],
+    "sources": [
+      [
+        "Docling GitHub Repository · docling-project",
+        "https://github.com/docling-project/docling"
+      ],
+      [
+        "IBM Research · Docling Technical Overview & Paper",
+        "https://arxiv.org/abs/2408.09869"
+      ],
+      [
+        "Docling Documentation & Architecture Guide",
+        "https://docling.ai"
+      ]
+    ],
+    "sourceNote": "บทความนี้ตรวจสอบจากคลังซอร์สโค้ด docling-project/docling, สถาปัตยกรรมโมเดล docling-ibm-models และรายงานวิจัย DocLayNet ของ IBM Research โดยระบุคุณสมบัติตามโค้ดจริง",
+    "social": "Docling จาก IBM Research ทะยานสู่อันดับ 1 GitHub Trending: ผ่าสถาปัตยกรรมตัวแปลง PDF/ตารางเป็น Markdown สำหรับ RAG ทำงานออฟไลน์ 100% ด้วย DocLayNet และ TableFormer สัญญาอนุญาต MIT ใช้ฟรีทั้งองค์กร"
+  },
+  {
     "slug": "anthropic-model-context-protocol-mcp",
     "category": "ข่าว AI",
     "art": "mcp-protocol",
