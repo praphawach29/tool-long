@@ -12,3 +12,6 @@ public/edition-*-share.png
 public/meeting-cover.svg
 public/meeting-share.png
 public/prototype.css
+
+.vercel
+.env*
